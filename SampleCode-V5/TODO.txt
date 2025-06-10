@@ -1,5 +1,13 @@
-- Add ONNX Dji model loader
+- Add ONNX Dji model loader - Done
 
-- Add model run over video stream
+- Add model run over video stream from drone
+ - model takes 640x640
 
 - Add gaussian blur to detected areas, except if label is Fisher boat
+
+- recreate basic drone flight app
+
+
+Requirements:
+need to run at 24 fps or more
+
