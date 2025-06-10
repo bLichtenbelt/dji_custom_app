@@ -2,4 +2,4 @@
 
 - Add model run over video stream
 
-- Add gaussian blur to detected areas
+- Add gaussian blur to detected areas, except if label is Fisher boat
