@@ -73,6 +73,7 @@ ext {
     deps.glide = 'com.github.bumptech.glide:glide:4.9.0'
     deps.glidecompiler = 'com.github.bumptech.glide:compiler:4.9.0'
 
+    deps.onnxruntime = 'com.microsoft.onnxruntime:onnxruntime-android:1.22.0'
 
     //wpmz 航线文件解析
     //本地依赖验证时将该aar放到主工程目录sdklib 并将sdk中aircraft 的gradle添加为本地依赖方式 api (name:"djisdkwpmz", ext:'aar')
