@@ -1,4 +1,4 @@
-- Add ONNX Dji model loader
+- Add ONNX Dji model loader (DONE)
 
 - Add model run over video stream
 
