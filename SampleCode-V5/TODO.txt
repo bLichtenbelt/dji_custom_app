@@ -1,5 +1,5 @@
 - Add ONNX Dji model loader (DONE)
 
-- Add model run over video stream
+- Add model run over video stream (DONE)
 
 - Add gaussian blur to detected areas, except if label is Fisher boat

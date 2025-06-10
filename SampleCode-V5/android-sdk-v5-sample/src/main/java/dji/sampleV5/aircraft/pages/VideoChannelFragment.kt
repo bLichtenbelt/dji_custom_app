@@ -20,6 +20,7 @@ import dji.sampleV5.aircraft.models.MultiVideoChannelVM
 import dji.sampleV5.aircraft.models.VideoChannelVM
 import dji.sampleV5.aircraft.models.VideoChannelVMFactory
 import dji.sampleV5.aircraft.util.ToastUtils
+import dji.sampleV5.aircraft.utils.ModelRunner
 import dji.v5.common.callback.CommonCallbacks
 import dji.v5.common.error.IDJIError
 import dji.v5.common.video.channel.VideoChannelState
@@ -138,6 +139,7 @@ class VideoChannelFragment : DJIFragment(), View.OnClickListener, SurfaceHolder.
         val factory = VideoChannelVMFactory(videoChannelType)
         channelVM = ViewModelProvider(this, factory).get(VideoChannelVM::class.java)
         init()
+        ModelRunner.init(requireContext(), "model.onnx")
     }
 
     private fun init() {
@@ -401,6 +403,8 @@ class VideoChannelFragment : DJIFragment(), View.OnClickListener, SurfaceHolder.
                             }
                         }
                         saveYuvData(mediaFormat, data, width, height)
+                        // Run the loaded ONNX model on the received frame
+                        ModelRunner.run(data, width, height)
                     }
                 })
             }
