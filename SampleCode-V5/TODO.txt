@@ -1,5 +1,8 @@
 - Add ONNX Dji model loader (DONE)
+	- (new) loads from sd card
 
 - Add model run over video stream (DONE)
 
-- Add gaussian blur to detected areas, except if label is Fisher boat
+
+- Add gaussian blur to detected areas
+	- (new) add blur selection based on config file (file should specify what labels to blur)
