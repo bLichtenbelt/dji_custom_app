@@ -1,3 +1,7 @@
-- Write new documentation here
+This document summarizes the custom additions made to the DJI Mobile SDK sample app.
 
-Write what changes have been made and why
+- **ONNX model support** using `OnnxModelLoader.kt` and `ModelRunner.kt`.  Models can be loaded from the APK assets or from external storage such as the SD card.
+- **Video stream processing** in `VideoChannelFragment` calls `ModelRunner.runAndBlur` so each YUV frame from the camera is analyzed by the ONNX model.
+- **Configurable gaussian blur** is applied to detected objects whose labels are listed in `blur_config.json`.
+
+These features enable real-time object detection on the drone video feed with selective blurring of sensitive content.
