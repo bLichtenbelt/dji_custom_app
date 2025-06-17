@@ -21,4 +21,18 @@ object OnnxModelLoader {
         val modelBytes = context.assets.open(assetPath).use { it.readBytes() }
         return env!!.createSession(modelBytes)
     }
+
+    /**
+     * Load an ONNX model from a file path on external storage.
+     *
+     * @param filePath Absolute path to the ONNX model file.
+     * @return OrtSession ready for inference.
+     */
+    fun loadModelFromFile(filePath: String): OrtSession {
+        if (env == null) {
+            env = OrtEnvironment.getEnvironment()
+        }
+        val modelBytes = java.io.File(filePath).readBytes()
+        return env!!.createSession(modelBytes)
+    }
 }
