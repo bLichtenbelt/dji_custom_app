@@ -139,7 +139,12 @@ class VideoChannelFragment : DJIFragment(), View.OnClickListener, SurfaceHolder.
         val factory = VideoChannelVMFactory(videoChannelType)
         channelVM = ViewModelProvider(this, factory).get(VideoChannelVM::class.java)
         init()
-        ModelRunner.init(requireContext(), "model.onnx")
+        val modelPath = android.os.Environment.getExternalStorageDirectory().absolutePath + "/model.onnx"
+        if (java.io.File(modelPath).exists()) {
+            ModelRunner.initFromFile(requireContext(), modelPath)
+        } else {
+            ModelRunner.init(requireContext(), "model.onnx")
+        }
     }
 
     private fun init() {
@@ -403,8 +408,8 @@ class VideoChannelFragment : DJIFragment(), View.OnClickListener, SurfaceHolder.
                             }
                         }
                         saveYuvData(mediaFormat, data, width, height)
-                        // Run the loaded ONNX model on the received frame
-                        ModelRunner.run(data, width, height)
+                        // Run the loaded ONNX model on the received frame and apply blur
+                        ModelRunner.runAndBlur(requireContext(), data, width, height)
                     }
                 })
             }
